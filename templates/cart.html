@@ -13,13 +13,16 @@
         </tr>
         </thead>
         <tbody>
+
+        {% for melon in cart%}
         <tr>
-            <td>Ancient Watermelon</td>
-            <td>5</td>
-            <td>$3.00</td>
-            <td>$15.00</td>
+            <td>{{ melon.common_name }}</td>
+            <td>{{ melon.quantity }}</td>
+            <td>${{ "%0.2f" | format(melon.price) }}</td>
+            <td>${{ "%0.2f" | format(melon.melon_cost) }}</td>
         </tr>
-        <tr>
+        {% endfor %}
+        <!-- <tr>
             <td>Charleston Gray</td>
             <td>2</td>
             <td>$2.00</td>
@@ -36,11 +39,11 @@
             <td>2</td>
             <td>$3.00</td>
             <td>$6.00</td>
-        </tr>
+        </tr> -->
         </tbody>
     </table>
 
-    <h3>Total: $27.00</h3>
+    <h3>Total: ${{ "%0.2f" | format(order_total) }}</h3>
 
     <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
 
